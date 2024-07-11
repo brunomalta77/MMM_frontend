@@ -1,12 +1,9 @@
-python==3.9.18
 pandas
 numpy 
 seaborn 
 streamlit 
 joblib
-plotly.express
-plotly.subplots
-plotly.graph_objects
+matplotlib
 os 
 scikit-learn
 shap
