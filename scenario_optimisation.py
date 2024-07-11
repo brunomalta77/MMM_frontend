@@ -620,7 +620,7 @@ def main():
     
     #=========================== Optimise total budget page ==================================
     if page == "Optimise total budget":
-        logout_container = st.container()
+             logout_container = st.container()
              st.title("Streamlit App with Microsoft SSO")
              #Global variables
              # Initialize session state variables
