@@ -7,3 +7,7 @@ plotly.express
 plotly.subplots
 plotly.graph_objects
 os 
+scikit-learn
+shap
+xgboost
+IPython.display
