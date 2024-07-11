@@ -584,7 +584,7 @@ def main():
     #=========================== Add logo on sidebar  ==================================
     
     # Path to the logo on your local machine
-    logo_path = r"C:\Users\BrunoMalta\OneDrive - Brand Delta\Documents\Projects\mmm_front_end\new_logo_rembg.png"
+    logo_path = r"new_logo_rembg.png"
     
     # Display the logo at the top right corner
     logo_img = Image.open(logo_path)
@@ -661,9 +661,9 @@ def main():
             """, unsafe_allow_html=True)
         
         # Load data
-            df = pd.read_excel(r"C:\Users\BrunoMalta\OneDrive - Brand Delta\Documents\Projects\mmm_front_end\Japan\data\consumables\BAT Japan model - 9.3_MP_ownprice (1).xlsx", sheet_name='Data')
-            dff_fin = pd.read_excel(r"C:\Users\BrunoMalta\OneDrive - Brand Delta\Documents\Projects\mmm_front_end\Japan\data\consumables\bat_japan_fm_cons_cont_v2.xlsx")
-            params = pd.read_excel(r"C:\Users\BrunoMalta\OneDrive - Brand Delta\Documents\Projects\mmm_front_end\Japan\data\consumables\media_saturation_params.xlsx")
+            df = pd.read_excel(r"BAT Japan model - 9.3_MP_ownprice (1).xlsx", sheet_name='Data')
+            dff_fin = pd.read_excel(r"bat_japan_fm_cons_cont_v2.xlsx")
+            params = pd.read_excel(r"media_saturation_params.xlsx")
             
             weekly_spend_df = pd.DataFrame(
             {'CVS': df['jp_bat_CVS_FM-total_exc_enabling_inv']/174.88, 
