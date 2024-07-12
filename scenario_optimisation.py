@@ -975,14 +975,15 @@ def main():
                           
               
                 with logout_container:
-                       col1, col2 = st.columns([10, 1])
+                       col1, col2,col3, = st.columns([10, 1,1])
                        with col2:
                                 if st.session_state.get('access', False):
                                          if st.button("Logout", key="logout_button"):
                                                   st.markdown("""
                                                   <meta http-equiv="refresh" content="0; url='https://mtflpjpww5ms3yv9galhh9.streamlit.app/'" />
-                                                   Logging out {st.session_state.user_email}...
                                                   """, unsafe_allow_html=True)
+                        with col3:
+                            st.write(st.session_state.user_email)
                                          
 
 if __name__ == "__main__":
