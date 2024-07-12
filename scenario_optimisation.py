@@ -970,7 +970,7 @@ def main():
                                 if st.session_state.get('access', False):
                                          if st.button("Logout", key="logout_button"):
                                                   st.markdown("""
-                                                  <meta http-equiv="refresh" content="0; url='https://mmmfrontend-gdvmldgey2cbwgpsbpzqdb.streamlit.app/'" />
+                                                  <meta http-equiv="refresh" content="0; url='https://mtflpjpww5ms3yv9galhh9.streamlit.app/'" />
                                                   """, unsafe_allow_html=True)
                                          st.write(f"Welcome user - {st.session_state.user_email}")
 
