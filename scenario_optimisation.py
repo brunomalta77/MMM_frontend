@@ -651,78 +651,78 @@ def main():
                                                             """, unsafe_allow_html=True)
                                                         
                                                         # Load data
-                                                            df = pd.read_excel(r"BAT Japan model - 9.3_MP_ownprice (1).xlsx", sheet_name='Data')
-                                                            dff_fin = pd.read_excel(r"bat_japan_fm_cons_cont_v2.xlsx")
-                                                            params = pd.read_excel(r"media_saturation_params.xlsx")
+                                                          df = pd.read_excel(r"BAT Japan model - 9.3_MP_ownprice (1).xlsx", sheet_name='Data')
+                                                          dff_fin = pd.read_excel(r"bat_japan_fm_cons_cont_v2.xlsx")
+                                                          params = pd.read_excel(r"media_saturation_params.xlsx")
                                                             
-                                                            weekly_spend_df = pd.DataFrame(
-                                                            {'CVS': df['jp_bat_CVS_FM-total_exc_enabling_inv']/174.88, 
-                                                            'NMP': df['jp_bat_NMP_without_enabling_inv']/174.88, 
-                                                            'One2One': df['jp_bat_one2one_approach']/174.88, 
-                                                            'EDM': df['jp_bat_EDM_total_inv']/174.88, 
-                                                            'OOH': df['jp_bat_OOH_reach']/174.88, 
-                                                            'Social': df['jp_bat_social_total_inv']/174.88, 
-                                                            'Horeca': df['jp_bat_horeca-events_total_inv']/174.88, 
-                                                            'ConnectedTV': df['jp_bat_ConnectedTV_inv']/174.88, 
-                                                            'DigDisp': df['jp_bat_DigitalDisplay_inv']/174.88, 
-                                                            'ProgDisp': df['jp_bat_ProgrammaticDisplay_inv']/174.88, 
-                                                            'ProgVid': df['jp_bat_ProgrammaticVideo_inv']/174.88, 
-                                                            'SocialDisp': df['jp_bat_SocialDisplay_inv']/174.88, 
-                                                            'Year': df['y']
-                                                            })
-                                                            
-                                                            media_contr_df = pd.DataFrame(
-                                                            {'CVS': [dff_fin['jp_bat_CVS_FM-total_exc_enabling_inv_adstocked'].sum()],
-                                                            'NMP': [dff_fin['jp_bat_NMP_without_enabling_inv_adstocked'].sum()],
-                                                            'One2One': [dff_fin['jp_bat_one2one_approach_adstocked'].sum()],
-                                                            'EDM': [dff_fin['jp_bat_EDM_total_inv_adstocked'].sum()],
-                                                            'OOH': [dff_fin['jp_bat_OOH_reach_adstocked'].sum()],
-                                                            'Social': [dff_fin['jp_bat_social_total_inv_adstocked'].sum()],
-                                                            'Horeca': [dff_fin['jp_bat_horeca-events_total_inv_adstocked'].sum()],
-                                                            'ConnectedTV': [dff_fin['jp_bat_ConnectedTV_impressions_adstocked'].sum()],
-                                                            'DigDisp': [dff_fin['jp_bat_DigitalDisplay_impressions_adstocked'].sum()],
-                                                            'ProgDisp': [dff_fin['jp_bat_ProgrammaticDisplay_impressions_adstocked'].sum()],
-                                                            'ProgVid': [dff_fin['jp_bat_ProgrammaticVideo_impressions_adstocked'].sum()],
-                                                            'SocialDisp': [dff_fin['jp_bat_SocialDisplay_impressions_adstocked'].sum()]
-                                                            })
-                                                            total_spend_df = pd.DataFrame(weekly_spend_df.groupby('Year')[list(weekly_spend_df.columns)[:-1]].sum())
-                                                            media_channels = ['CVS', 'NMP','One2One','EDM','OOH','Social','Horeca','ConnectedTV','DigDisp','ProgDisp','ProgVid','SocialDisp']
-                                                            params.index=media_channels
-                                                            
-                                                            # Print the main metrics
-                                                            total_spend = total_spend_df.loc[2023].sum()
-                                                            incremental_revenue = (media_contr_df.sum().sum()*23.94)/174.88
-                                                            incremental_gross_margin = incremental_revenue * 0.3  # Assuming 30% gross margin
-                                                            col1, col2, col3 = st.columns(3)
-                                                            col1.metric(label="Total Spend in 2023 (GBP)", value=f"£{total_spend/1e6:.2f}M")
-                                                            col2.metric(label="Incremental Revenue (GBP)", value=f"£{incremental_revenue/1e6:.2f}M")
-                                                            col3.metric(label="Incremental Gross Margin (GBP)", value=f"£{incremental_gross_margin/1e6:.2f}M")
-                                                            st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
-                                                
-                                                            # Ask user to enter total budget and channel spend constraints
-                                                            st.subheader("Optimization Inputs")
-                                                            budget_change_pct = st.number_input("Budget % Change", value=st.session_state.inputs.get("budget_change_pct", 0), key="budget_change_pct")
-                                                            total_budget = total_spend_df.loc[2023].sum() * (1 + budget_change_pct / 100)  
-                                                            
-                                                            min_spend = {}
-                                                            max_spend = {}
-                                                            
-                                                            cols = st.columns(3)
-                                                            #cols[0].markdown("### Channel")
-                                                            cols[0].markdown("### Min (%)")
-                                                            cols[1].markdown("### Max (%)")
-                                                            cols[2].markdown("### Last Year")
-                                                
-                                                            for channel in media_channels:
-                                                                col1, col2, col3 = st.columns(3)
-                                                                # with col1:
-                                                                #     col1.markdown(f"**{channel}**")
-                                                                with col1:
-                                                                    min_spend[channel] = st.text_input(f"{channel}_Min", value=st.session_state.inputs.get(f"min_spend_{channel}", 0), key=f"min_spend_{channel}")
-                                                                with col2:
-                                                                    max_spend[channel] = st.text_input(f"{channel}_Max", value=st.session_state.inputs.get(f"max_spend_{channel}", 0), key=f"max_spend_{channel}")
-                                                                with col3:
-                                                                    col3.markdown(f"£{round(total_spend_df.loc[2023, channel]/1e6,1)}M")
+                                                          weekly_spend_df = pd.DataFrame(
+                                                          {'CVS': df['jp_bat_CVS_FM-total_exc_enabling_inv']/174.88, 
+                                                          'NMP': df['jp_bat_NMP_without_enabling_inv']/174.88, 
+                                                          'One2One': df['jp_bat_one2one_approach']/174.88, 
+                                                          'EDM': df['jp_bat_EDM_total_inv']/174.88, 
+                                                          'OOH': df['jp_bat_OOH_reach']/174.88, 
+                                                          'Social': df['jp_bat_social_total_inv']/174.88, 
+                                                          'Horeca': df['jp_bat_horeca-events_total_inv']/174.88, 
+                                                          'ConnectedTV': df['jp_bat_ConnectedTV_inv']/174.88, 
+                                                          'DigDisp': df['jp_bat_DigitalDisplay_inv']/174.88, 
+                                                          'ProgDisp': df['jp_bat_ProgrammaticDisplay_inv']/174.88, 
+                                                          'ProgVid': df['jp_bat_ProgrammaticVideo_inv']/174.88, 
+                                                          'SocialDisp': df['jp_bat_SocialDisplay_inv']/174.88, 
+                                                          'Year': df['y']
+                                                        })
+                                                        
+                                                          media_contr_df = pd.DataFrame(
+                                                          {'CVS': [dff_fin['jp_bat_CVS_FM-total_exc_enabling_inv_adstocked'].sum()],
+                                                          'NMP': [dff_fin['jp_bat_NMP_without_enabling_inv_adstocked'].sum()],
+                                                          'One2One': [dff_fin['jp_bat_one2one_approach_adstocked'].sum()],
+                                                          'EDM': [dff_fin['jp_bat_EDM_total_inv_adstocked'].sum()],
+                                                          'OOH': [dff_fin['jp_bat_OOH_reach_adstocked'].sum()],
+                                                          'Social': [dff_fin['jp_bat_social_total_inv_adstocked'].sum()],
+                                                          'Horeca': [dff_fin['jp_bat_horeca-events_total_inv_adstocked'].sum()],
+                                                          'ConnectedTV': [dff_fin['jp_bat_ConnectedTV_impressions_adstocked'].sum()],
+                                                          'DigDisp': [dff_fin['jp_bat_DigitalDisplay_impressions_adstocked'].sum()],
+                                                          'ProgDisp': [dff_fin['jp_bat_ProgrammaticDisplay_impressions_adstocked'].sum()],
+                                                          'ProgVid': [dff_fin['jp_bat_ProgrammaticVideo_impressions_adstocked'].sum()],
+                                                          'SocialDisp': [dff_fin['jp_bat_SocialDisplay_impressions_adstocked'].sum()]
+                                                        })
+                                                          total_spend_df = pd.DataFrame(weekly_spend_df.groupby('Year')[list(weekly_spend_df.columns)[:-1]].sum())
+                                                          media_channels = ['CVS', 'NMP','One2One','EDM','OOH','Social','Horeca','ConnectedTV','DigDisp','ProgDisp','ProgVid','SocialDisp']
+                                                          params.index=media_channels
+                                                        
+                                                          # Print the main metrics
+                                                          total_spend = total_spend_df.loc[2023].sum()
+                                                          incremental_revenue = (media_contr_df.sum().sum()*23.94)/174.88
+                                                          incremental_gross_margin = incremental_revenue * 0.3  # Assuming 30% gross margin
+                                                          col1, col2, col3 = st.columns(3)
+                                                          col1.metric(label="Total Spend in 2023 (GBP)", value=f"£{total_spend/1e6:.2f}M")
+                                                          col2.metric(label="Incremental Revenue (GBP)", value=f"£{incremental_revenue/1e6:.2f}M")
+                                                          col3.metric(label="Incremental Gross Margin (GBP)", value=f"£{incremental_gross_margin/1e6:.2f}M")
+                                                          st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
+                                            
+                                                          # Ask user to enter total budget and channel spend constraints
+                                                          st.subheader("Optimization Inputs")
+                                                          budget_change_pct = st.number_input("Budget % Change", value=st.session_state.inputs.get("budget_change_pct", 0), key="budget_change_pct")
+                                                          total_budget = total_spend_df.loc[2023].sum() * (1 + budget_change_pct / 100)  
+                                                        
+                                                          min_spend = {}
+                                                          max_spend = {}
+                                                        
+                                                          cols = st.columns(3)
+                                                          #cols[0].markdown("### Channel")
+                                                          cols[0].markdown("### Min (%)")
+                                                          cols[1].markdown("### Max (%)")
+                                                          cols[2].markdown("### Last Year")
+                                            
+                                                          for channel in media_channels:
+                                                              col1, col2, col3 = st.columns(3)
+                                                              # with col1:
+                                                              #     col1.markdown(f"**{channel}**")
+                                                              with col1:
+                                                                  min_spend[channel] = st.text_input(f"{channel}_Min", value=st.session_state.inputs.get(f"min_spend_{channel}", 0), key=f"min_spend_{channel}")
+                                                              with col2:
+                                                                  max_spend[channel] = st.text_input(f"{channel}_Max", value=st.session_state.inputs.get(f"max_spend_{channel}", 0), key=f"max_spend_{channel}")
+                                                              with col3:
+                                                                  col3.markdown(f"£{round(total_spend_df.loc[2023, channel]/1e6,1)}M")
     
                                                  st.session_state.access = True
                                                  st.experimental_rerun()
