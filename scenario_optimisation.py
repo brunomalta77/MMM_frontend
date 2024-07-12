@@ -639,7 +639,7 @@ def main():
              if 'login_clicked' not in st.session_state:
                       st.session_state.login_clicked = False
 
-            if 'user_email' not in st.session_state:
+             if 'user_email' not in st.session_state:
                 st.session_state.user_email = None
         
              if not st.session_state.access:                  
