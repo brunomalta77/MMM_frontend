@@ -647,11 +647,11 @@ def main():
                                         login()
                                         # Check for authorization code in URL
                                         params = st.experimental_get_query_params()
+                                        st.write(params)
+                                        time.sleep(10)
                                         if "code" in params:
                                                  code = params["code"][0]
                                                  token = get_token_from_code(code)
-                                                 st.write(token)
-                                                 time.sleep(5)
                                                  if token:
                                                           st.session_state.access_token = token
                                                           st.session_state.user_email = get_user_info(st.session_state.access_token)
