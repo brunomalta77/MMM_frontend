@@ -64,4 +64,4 @@ jobs:
         with:
           app-name: 'MMMFrontend'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FEEE1F8CBB3D42D2A14AEA381D587425 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_30A4E57F0BE042959245D2B600E4BE70 }}
