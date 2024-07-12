@@ -993,7 +993,7 @@ def main():
                        
                        with col3:
                            components.html(html_code, height=5)
-                           st.markdown(f'<p style="font-size:15px;">{st.session_state.user_email}</p>', unsafe_allow_html=True)
+                           st.markdown(f'<p style="font-size:13px;">{st.session_state.user_email}</p>', unsafe_allow_html=True)
 
                                          
 
