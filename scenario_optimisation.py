@@ -640,7 +640,6 @@ def main():
     #=========================== Optimise total budget page ==================================
     if page == "Optimise total budget":
              logout_container = st.container()
-             st.title("Streamlit App with Microsoft SSO")
              #Global variables
              # Initialize session state variables
     
@@ -808,7 +807,6 @@ def main():
     
              else:
                 # User is logged in, show content and logout button
-                st.write("You are logged in!")
                 st.markdown("""
                 <div class="header">
                 <div class="header-title">Optimise Total Budget</div>
