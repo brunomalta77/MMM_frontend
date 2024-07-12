@@ -990,7 +990,7 @@ def main():
                                 if st.session_state.get('access', False):
                                          if st.button("Logout", key="logout_button"):
                                                   st.markdown("""
-                                                  <meta http-equiv="refresh" content="0; url='https://mtflpjpww5ms3yv9galhh9.streamlit.app/'" />
+                                                  <meta http-equiv="refresh" content="0; url='https://mmmfrontend.azurewebsites.net/'" />
                                                   """, unsafe_allow_html=True)
                        
                        col1,col2 = st.columns([3,1])
