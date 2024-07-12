@@ -935,7 +935,7 @@ def main():
                 }
                 .logout-button button {
                     background-color: #ff4b4b;
-                    color: red;
+                    color: white;
                     border: none;
                     padding: 0.15rem 0.5rem;  /* Reduced padding to make button smaller */
                     text-align: center;
