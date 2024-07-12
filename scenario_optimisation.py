@@ -981,7 +981,7 @@ def main():
                                          if st.button("Logout", key="logout_button"):
                                                   st.markdown("""
                                                   <meta http-equiv="refresh" content="0; url='https://mtflpjpww5ms3yv9galhh9.streamlit.app/'" />
-                                                   <p>Logging out {st.session_state.user_email}...</p>
+                                                   Logging out {st.session_state.user_email}...
                                                   """, unsafe_allow_html=True)
                                          
 
