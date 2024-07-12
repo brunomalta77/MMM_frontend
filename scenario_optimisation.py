@@ -59,7 +59,7 @@ retailer = 'FamilyMart'
 CLIENT_ID = "15dfcfc0-38a3-4719-911d-19bd250e1e27"
 CLIENT_SECRET = "ed397c85-8f74-4a83-a27f-b34233923cf7"
 AUTHORITY = "https://login.microsoftonline.com/68421f43-a2e1-4c77-90f4-e12a5c7e0dbc"
-SCOPE = ["User.Read"]
+SCOPE = ["User.Read", "email", "openid", "profile"]
 REDIRECT_URI = "https://mtflpjpww5ms3yv9galhh9.streamlit.app/" # This should match your Azure AD app configuration
 
 # Initialize MSAL application
@@ -71,8 +71,17 @@ def get_auth_url():
     return app.get_authorization_request_url(SCOPE, redirect_uri=REDIRECT_URI)
 
 def get_token_from_code(code):
-    result = app.acquire_token_by_authorization_code(code, SCOPE, redirect_uri=REDIRECT_URI)
-    return result.get("access_token")
+    try:
+        result = app.acquire_token_by_authorization_code(code, SCOPE, redirect_uri=REDIRECT_URI)
+        if "access_token" in result:
+            return result["access_token"]
+        else:
+            st.error(f"Failed to acquire token. Error: {result.get('error')}")
+            st.error(f"Error description: {result.get('error_description')}")
+            return None
+    except Exception as e:
+        st.error(f"An exception occurred: {str(e)}")
+        return None
 
 #def get_user_info(access_token):
     #headers = {'Authorization': f'Bearer {access_token}'}
