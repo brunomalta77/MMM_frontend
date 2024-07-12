@@ -649,9 +649,9 @@ def main():
                                         params = st.experimental_get_query_params()
                                         if "code" in params:
                                                  code = params["code"][0]
-                                                 st.write(code)
-                                                 time.sleep(5)
                                                  token = get_token_from_code(code)
+                                                 st.write(token)
+                                                 time.sleep(5)
                                                  if token:
                                                           st.session_state.access_token = token
                                                           st.session_state.user_email = get_user_info(st.session_state.access_token)
