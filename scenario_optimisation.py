@@ -982,7 +982,7 @@ def main():
                                                   st.markdown("""
                                                   <meta http-equiv="refresh" content="0; url='https://mtflpjpww5ms3yv9galhh9.streamlit.app/'" />
                                                   """, unsafe_allow_html=True)
-                        with col3:
+                       with col3:
                             st.write(st.session_state.user_email)
                                          
 
