@@ -812,7 +812,7 @@ def main():
     
 
 
-        if st.button("Optimize Spend"):
+     if st.button("Optimize Spend"):
             st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
             min_spend = {channel: total_spend_df.loc[2023, channel] * (1 + float(min_spend[channel]) / 100) for channel in media_channels if min_spend[channel]}
             max_spend = {channel: total_spend_df.loc[2023, channel] * (1 + float(max_spend[channel]) / 100) for channel in media_channels if max_spend[channel]}
