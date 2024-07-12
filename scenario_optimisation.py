@@ -951,7 +951,7 @@ def main():
                 #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 2rem;}
                 .logout-email-container {
                     position: fixed;
-                    top: 3rem;  /* Increased from 0.5rem to move it lower */
+                    top: 1rem;  /* Increased from 0.5rem to move it lower */
                     right: 0.5rem;
                     z-index: 999999;
                     display: flex;
