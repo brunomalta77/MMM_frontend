@@ -984,7 +984,7 @@ def main():
                 """
                  
                 with logout_container:
-                       col1, col2,col3, = st.columns([4,1,2])
+                       col1, col2,col3, = st.columns([4,1,1])
                        with col2:
                                 components.html(html_code, height=5)
                                 if st.session_state.get('access', False):
