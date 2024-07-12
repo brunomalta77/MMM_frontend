@@ -662,8 +662,6 @@ def main():
                                                  if token:
                                                           st.session_state.access_token = token
                                                           st.session_state.user_email = get_user_info(st.session_state.access_token)
-                                                          st.write(st.session_state.user_email)
-                                                          time.sleep(20)
                                                           st.experimental_set_query_params()
         
                                                  st.markdown("""
