@@ -55,8 +55,8 @@ retailer = 'FamilyMart'
 # =============================   SSO Login   ===================================================
 
 # Microsoft Azure AD configurations
-CLIENT_ID = "bd2716bd-0234-4be1-93b9-22acc253516e"
-CLIENT_SECRET = "930fa6d7-068b-4f23-b5e7-c643d97c1551"
+CLIENT_ID = "9c1b39c1-31b8-4776-9377-4c3275591f1a"
+CLIENT_SECRET = "965c200c-535e-4f48-ac69-887056d0adc0"
 AUTHORITY = "https://login.microsoftonline.com/68421f43-a2e1-4c77-90f4-e12a5c7e0dbc"
 SCOPE = ["User.Read"]
 REDIRECT_URI = "https://frnldjw2-8501.uks1.devtunnels.ms/" # This should match your Azure AD app configuration
