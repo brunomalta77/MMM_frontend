@@ -58,7 +58,7 @@ retailer = 'FamilyMart'
 CLIENT_ID = "9c1b39c1-31b8-4776-9377-4c3275591f1a"
 CLIENT_SECRET = "965c200c-535e-4f48-ac69-887056d0adc0"
 AUTHORITY = "https://login.microsoftonline.com/68421f43-a2e1-4c77-90f4-e12a5c7e0dbc"
-SCOPE = ["User.Read"]
+SCOPE = ["User.Read","email"]
 REDIRECT_URI = "https://mmmfrontend-gdvmldgey2cbwgpsbpzqdb.streamlit.app/" # This should match your Azure AD app configuration
 
 # Initialize MSAL application
@@ -73,14 +73,21 @@ def get_token_from_code(code):
     result = app.acquire_token_by_authorization_code(code, SCOPE, redirect_uri=REDIRECT_URI)
     return result.get("access_token")
 
-def get_user_info(access_token):
-    headers = {'Authorization': f'Bearer {access_token}'}
-    response = requests.get('https://graph.microsoft.com/v1.0/me', headers=headers)
-    return response.json()
+#def get_user_info(access_token):
+    #headers = {'Authorization': f'Bearer {access_token}'}
+    #response = requests.get('https://graph.microsoft.com/v1.0/me', headers=headers)
+    #return response.json()
 
 def login():
     auth_url = get_auth_url()
     st.markdown(f'[Login with Microsoft]({auth_url})')
+
+def get_user_info(access_token):
+       headers = {'Authorization': f'Bearer {access_token}'}
+       response = requests.get('https://graph.microsoft.com/v1.0/me', headers=headers)
+       user_info = response.json()
+       return user_info.get('mail') or user_info.get('userPrincipalName')
+
 
 
 # =============================   FUNCTIONS   ===================================================
@@ -631,7 +638,10 @@ def main():
                       
              if 'login_clicked' not in st.session_state:
                       st.session_state.login_clicked = False
-    
+
+            if 'user_email' not in st.session_state:
+                st.session_state.user_email = None
+        
              if not st.session_state.access:                  
                                         login()
                                         # Check for authorization code in URL
@@ -641,6 +651,7 @@ def main():
                                                  token = get_token_from_code(code)
                                                  if token:
                                                           st.session_state.access_token = token
+                                                          st.session_state.user_email = get_user_info(token)
                                                           st.experimental_set_query_params()
         
                                                  st.markdown("""
@@ -961,6 +972,7 @@ def main():
                                                   st.markdown("""
                                                   <meta http-equiv="refresh" content="0; url='https://mmmfrontend-gdvmldgey2cbwgpsbpzqdb.streamlit.app/'" />
                                                   """, unsafe_allow_html=True)
+                                         st.write(f"Welcome user - {st.session_state.user_email}")
 
 if __name__ == "__main__":
     main()
