@@ -982,7 +982,7 @@ def main():
                 """
                  
                 with logout_container:
-                       col1, col2,col3 = st.columns([5,1,1])
+                       col1, col2,col3 = st.columns([4,1,1])
                        with col2:
                                 components.html(html_code, height=3)
                                 if st.session_state.get('access', False):
@@ -993,7 +993,7 @@ def main():
                        
                        with col3:
                            components.html(html_code, height=3)
-                           st.markdown(f'<p style="font-size:10px;">{st.session_state.user_email}</p>', unsafe_allow_html=True)
+                           st.markdown(f'<p style="font-size:13px;">{st.session_state.user_email}</p>', unsafe_allow_html=True)
 
                                          
 
