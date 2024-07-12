@@ -945,45 +945,59 @@ def main():
                                 display_optimized_spend_plot(optimized_spend)
                         
               # Custom CSS to push the logout button to the right and style it
+               # Custom CSS to style the logout button and email display
                 st.markdown("""
                 <style>
                 #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 2rem;}
-                .logout-button {
+                .logout-email-container {
                     position: fixed;
-                    top: 3rem;
+                    top: 3rem;  /* Increased from 0.5rem to move it lower */
                     right: 0.5rem;
                     z-index: 999999;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
                 }
                 .logout-button button {
                     background-color: #ff4b4b;
                     color: white;
                     border: none;
-                    padding: 0.15rem 0.5rem;  /* Reduced padding to make button smaller */
+                    padding: 0.15rem 0.5rem;
                     text-align: center;
                     text-decoration: none;
                     display: inline-block;
-                    font-size: 0.8rem;  /* Reduced font size */
-                    margin: 2px 1px;  /* Reduced margin */
+                    font-size: 0.8rem;
+                    margin: 2px 1px;
                     cursor: pointer;
-                    border-radius: 3px;  /* Slightly reduced border radius */
+                    border-radius: 3px;
                 }
                 .logout-button button:hover {
                     background-color: #ff0000;
                 }
+                .user-email {
+                    font-size: 0.8rem;
+                    margin-top: 0.25rem;
+                    color: #888;
+                }
                 </style>
                 """, unsafe_allow_html=True)
-                          
-              
-                with logout_container:
-                       col1, col2,col3, = st.columns([7, 1,1])
-                       with col2:
-                                if st.session_state.get('access', False):
-                                         if st.button("Logout", key="logout_button"):
-                                                  st.markdown("""
-                                                  <meta http-equiv="refresh" content="0; url='https://mtflpjpww5ms3yv9galhh9.streamlit.app/'" />
-                                                  """, unsafe_allow_html=True)
-                       with col3:
-                            st.write(st.session_state.user_email)
+                
+                # Create a container for the logout button and email
+                logout_email_container = st.container()
+                
+                # Use the container to position the logout button and email
+                with logout_email_container:
+                    col1, col2 = st.columns([3, 1])
+                    with col2:
+                        st.markdown('<div class="logout-email-container">', unsafe_allow_html=True)
+                        if st.session_state.get('access', False):
+                            if st.button("Logout", key="logout_button"):
+                                st.markdown("""
+                                <meta http-equiv="refresh" content="0; url='https://mtflpjpww5ms3yv9galhh9.streamlit.app/'" />
+                                """, unsafe_allow_html=True)
+                            st.markdown(f'<div class="user-email">{st.session_state.get("user_email", "")}</div>', unsafe_allow_html=True)
+                        st.markdown('</div>', unsafe_allow_html=True)
+
                                          
 
 if __name__ == "__main__":
