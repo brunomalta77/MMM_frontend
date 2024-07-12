@@ -651,7 +651,7 @@ def main():
                                                  token = get_token_from_code(code)
                                                  if token:
                                                           st.session_state.access_token = token
-                                                          st.session_state.user_email = get_user_info(token)
+                                                          st.session_state.user_email = get_user_info(st.session_state.access_token)
                                                           st.experimental_set_query_params()
         
                                                  st.markdown("""
