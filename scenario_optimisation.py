@@ -954,7 +954,7 @@ def main():
                           
               
                 with logout_container:
-                       col1, col2 = st.columns([19, 1])
+                       col1, col2 = st.columns([5, 1])
                        with col2:
                                 if st.session_state.get('access', False):
                                          if st.button("Logout", key="logout_button"):
