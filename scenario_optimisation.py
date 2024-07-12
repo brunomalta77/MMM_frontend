@@ -992,7 +992,7 @@ def main():
                                                   """, unsafe_allow_html=True)
                        
                        with col3:
-                           #components.html(html_code, height=5)
+                           components.html(html_code, height=5)
                            st.write(st.session_state.user_email)
 
                                          
