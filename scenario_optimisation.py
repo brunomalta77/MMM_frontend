@@ -977,7 +977,6 @@ def main():
                 # Custom HTML and CSS to adjust col2 position
                 html_code = """
                 <div style="margin-top: 50px;">
-                    <p>Content for column 2</p>
                 </div>
                 """
                  
