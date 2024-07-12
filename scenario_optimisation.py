@@ -57,7 +57,7 @@ retailer = 'FamilyMart'
 
 # Microsoft Azure AD configurations
 CLIENT_ID = "15dfcfc0-38a3-4719-911d-19bd250e1e27"
-CLIENT_SECRET = "ed397c85-8f74-4a83-a27f-b34233923cf7"
+CLIENT_SECRET = "n9u8Q~reHgfVJrNikVorNPq4KLvS_J0JjH69vbhO"
 AUTHORITY = "https://login.microsoftonline.com/68421f43-a2e1-4c77-90f4-e12a5c7e0dbc"
 SCOPE = ["User.Read", "Mail.Read"]
 REDIRECT_URI = "https://mtflpjpww5ms3yv9galhh9.streamlit.app/" # This should match your Azure AD app configuration
