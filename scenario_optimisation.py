@@ -31,6 +31,7 @@ import matplotlib.pyplot as plt
 # sns.set_style("whitegrid")
 # sns.set(rc = {'figure.figsize':(15, 10)})
 
+import time
 import shap 
 import xgboost
 import optuna
@@ -649,7 +650,8 @@ def main():
                                         if "code" in params:
                                                  code = params["code"][0]
                                                  token = get_token_from_code(code)
-                                                 st.write(token) 
+                                                 st.write(token)
+                                                 time.sleep(5)
                                                  if token:
                                                           st.session_state.access_token = token
                                                           st.session_state.user_email = get_user_info(st.session_state.access_token)
