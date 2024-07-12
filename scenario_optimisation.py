@@ -724,61 +724,61 @@ def main():
                                                                   col3.markdown(f"£{round(total_spend_df.loc[2023, channel]/1e6,1)}M")
 
 
-                                                              if st.button("Optimize Spend"):
-                                                                  st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
-                                                                  min_spend = {channel: total_spend_df.loc[2023, channel] * (1 + float(min_spend[channel]) / 100) for channel in media_channels if min_spend[channel]}
-                                                                  max_spend = {channel: total_spend_df.loc[2023, channel] * (1 + float(max_spend[channel]) / 100) for channel in media_channels if max_spend[channel]}
-                                                                  # min_spend = {k: float(v) for k, v in min_spend.items() if v}
-                                                                  # max_spend = {k: float(v) for k, v in max_spend.items() if v}
-                                                                  optimized_spend = optimize_media_spend(total_budget, media_channels, list(min_spend.values()), list(max_spend.values()), params)
-                                                                  if optimized_spend:
-                                                                      # Print the optimised metrics
-                                                                      new_total_spend = sum(optimized_spend.values())
-                                                                      new_incremental_revenue = calculate_incremental_revenue(optimized_spend, media_contr_df, params)
-                                                                      new_incremental_gross_margin = new_incremental_revenue * 0.3  # Assuming 30% gross margin
-                                                                      col1, col2, col3 = st.columns(3)
-                                                                      col1.metric(label="New Total Spend (GBP)", value=f"£{new_total_spend/1e6:.2f}M")
-                                                                      col2.metric(label="Optimised Incremental Revenue (GBP)", value=f"£{new_incremental_revenue/1e6:.2f}M")
-                                                                      col3.metric(label="Optimised Incremental Gross Margin (GBP)", value=f"£{new_incremental_gross_margin/1e6:.2f}M")
-                                                                      #st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
-                                                                      #st.markdown('<div class="section-header">Optimized Total Spend</div>', unsafe_allow_html=True)                
+                                                          if st.button("Optimize Spend"):
+                                                              st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
+                                                              min_spend = {channel: total_spend_df.loc[2023, channel] * (1 + float(min_spend[channel]) / 100) for channel in media_channels if min_spend[channel]}
+                                                              max_spend = {channel: total_spend_df.loc[2023, channel] * (1 + float(max_spend[channel]) / 100) for channel in media_channels if max_spend[channel]}
+                                                              # min_spend = {k: float(v) for k, v in min_spend.items() if v}
+                                                              # max_spend = {k: float(v) for k, v in max_spend.items() if v}
+                                                              optimized_spend = optimize_media_spend(total_budget, media_channels, list(min_spend.values()), list(max_spend.values()), params)
+                                                              if optimized_spend:
+                                                                  # Print the optimised metrics
+                                                                  new_total_spend = sum(optimized_spend.values())
+                                                                  new_incremental_revenue = calculate_incremental_revenue(optimized_spend, media_contr_df, params)
+                                                                  new_incremental_gross_margin = new_incremental_revenue * 0.3  # Assuming 30% gross margin
+                                                                  col1, col2, col3 = st.columns(3)
+                                                                  col1.metric(label="New Total Spend (GBP)", value=f"£{new_total_spend/1e6:.2f}M")
+                                                                  col2.metric(label="Optimised Incremental Revenue (GBP)", value=f"£{new_incremental_revenue/1e6:.2f}M")
+                                                                  col3.metric(label="Optimised Incremental Gross Margin (GBP)", value=f"£{new_incremental_gross_margin/1e6:.2f}M")
+                                                                  #st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
+                                                                  #st.markdown('<div class="section-header">Optimized Total Spend</div>', unsafe_allow_html=True)                
+                                                                
+                                                                  actual_spend = total_spend_df.loc[2023].to_dict()
+                                                                  col1, col2 = st.columns(2)
+                                                                  with col1:
+                                                                    opt_results_df = display_comparison_table(actual_spend, optimized_spend, media_contr_df, params)
+                                                                    st.dataframe(opt_results_df, height=320)
                                                                     
-                                                                      actual_spend = total_spend_df.loc[2023].to_dict()
-                                                                      col1, col2 = st.columns(2)
-                                                                      with col1:
-                                                                        opt_results_df = display_comparison_table(actual_spend, optimized_spend, media_contr_df, params)
-                                                                        st.dataframe(opt_results_df, height=320)
-                                                                        
-                                                                        # Display download button
-                                                                        opt_results_df_download = to_excel(opt_results_df)
-                                                                        b64 = base64.b64encode(opt_results_df_download).decode()
-                                                                        st.markdown(f"""
-                                                                        <a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="optimised_spend.xlsx">
-                                                                            <i class="fas fa-download download-icon"></i>
-                                                                        </a>
-                                                                        """, unsafe_allow_html=True)
-                                                                    
-                                                                        # Add download button for optimal spend
-                                                                        #st.markdown(generate_excel_download_link(opt_results_df, "optimal_spend", "Download"), unsafe_allow_html=True)
-                                                                        # st.markdown(
-                                                                        #     """
-                                                                        #     <div class="results-section">
-                                                                        #         <button class="download-btn">
-                                                                        #             <i class="fa fa-download"></i>
-                                                                        #         </button>
-                                                                        #     </div>
-                                                                        #     """,
-                                                                        #     unsafe_allow_html=True
-                                                                        # )
-                                                                        # Include Font Awesome for download icon
-                                                                        st.markdown(
-                                                                            """
-                                                                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-                                                                            """,
-                                                                            unsafe_allow_html=True
-                                                                        )
-                                                                      with col2:
-                                                                        display_optimized_spend_plot(optimized_spend)
+                                                                    # Display download button
+                                                                    opt_results_df_download = to_excel(opt_results_df)
+                                                                    b64 = base64.b64encode(opt_results_df_download).decode()
+                                                                    st.markdown(f"""
+                                                                    <a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="optimised_spend.xlsx">
+                                                                        <i class="fas fa-download download-icon"></i>
+                                                                    </a>
+                                                                    """, unsafe_allow_html=True)
+                                                                
+                                                                    # Add download button for optimal spend
+                                                                    #st.markdown(generate_excel_download_link(opt_results_df, "optimal_spend", "Download"), unsafe_allow_html=True)
+                                                                    # st.markdown(
+                                                                    #     """
+                                                                    #     <div class="results-section">
+                                                                    #         <button class="download-btn">
+                                                                    #             <i class="fa fa-download"></i>
+                                                                    #         </button>
+                                                                    #     </div>
+                                                                    #     """,
+                                                                    #     unsafe_allow_html=True
+                                                                    # )
+                                                                    # Include Font Awesome for download icon
+                                                                    st.markdown(
+                                                                        """
+                                                                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+                                                                        """,
+                                                                        unsafe_allow_html=True
+                                                                    )
+                                                                  with col2:
+                                                                    display_optimized_spend_plot(optimized_spend)
                                                  st.session_state.access = True
                                                  st.experimental_rerun()
     
@@ -858,12 +858,12 @@ def main():
                     col1, col2, col3 = st.columns(3)
                     # with col1:
                     #     col1.markdown(f"**{channel}**")
-                with col1:
-                    min_spend[channel] = st.text_input(f"{channel}_Min", value=st.session_state.inputs.get(f"min_spend_{channel}", 0), key=f"min_spend_{channel}")
-                with col2:
-                    max_spend[channel] = st.text_input(f"{channel}_Max", value=st.session_state.inputs.get(f"max_spend_{channel}", 0), key=f"max_spend_{channel}")
-                with col3:
-                    col3.markdown(f"£{round(total_spend_df.loc[2023, channel]/1e6,1)}M")
+                    with col1:
+                        min_spend[channel] = st.text_input(f"{channel}_Min", value=st.session_state.inputs.get(f"min_spend_{channel}", 0), key=f"min_spend_{channel}")
+                    with col2:
+                        max_spend[channel] = st.text_input(f"{channel}_Max", value=st.session_state.inputs.get(f"max_spend_{channel}", 0), key=f"max_spend_{channel}")
+                    with col3:
+                        col3.markdown(f"£{round(total_spend_df.loc[2023, channel]/1e6,1)}M")
     
 
 
