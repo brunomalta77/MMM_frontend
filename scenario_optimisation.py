@@ -935,7 +935,7 @@ def main():
                 }
                 .logout-button button {
                     background-color: #ff4b4b;
-                    color: white;
+                    color: red;
                     border: none;
                     padding: 0.15rem 0.5rem;  /* Reduced padding to make button smaller */
                     text-align: center;
@@ -954,7 +954,7 @@ def main():
                           
               
                 with logout_container:
-                       col1, col2 = st.columns([5, 1])
+                       col1, col2 = st.columns([10, 1])
                        with col2:
                                 if st.session_state.get('access', False):
                                          if st.button("Logout", key="logout_button"):
