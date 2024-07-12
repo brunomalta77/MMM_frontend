@@ -950,7 +950,7 @@ def main():
                 #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 2rem;}
                 .logout-button {
                     position: fixed;
-                    top: 0.5rem;
+                    top: 3rem;
                     right: 0.5rem;
                     z-index: 999999;
                 }
@@ -975,7 +975,7 @@ def main():
                           
               
                 with logout_container:
-                       col1, col2,col3, = st.columns([5, 1,1])
+                       col1, col2,col3, = st.columns([7, 1,1])
                        with col2:
                                 if st.session_state.get('access', False):
                                          if st.button("Logout", key="logout_button"):
