@@ -646,7 +646,6 @@ def main():
                                         login()
                                         # Check for authorization code in URL
                                         params = st.experimental_get_query_params()
-                                        st.write("Query Parameters:", params)
                                         if "code" in params:
                                                  code = params["code"][0]
                                                  token = get_token_from_code(code)
