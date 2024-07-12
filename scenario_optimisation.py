@@ -63,7 +63,7 @@ CLIENT_ID = "15dfcfc0-38a3-4719-911d-19bd250e1e27"
 CLIENT_SECRET = "n9u8Q~reHgfVJrNikVorNPq4KLvS_J0JjH69vbhO"
 AUTHORITY = "https://login.microsoftonline.com/68421f43-a2e1-4c77-90f4-e12a5c7e0dbc"
 SCOPE = ["User.Read", "Mail.Read"]
-REDIRECT_URI = "mmmfrontend.azurewebsites.net" # This should match your Azure AD app configuration
+REDIRECT_URI = "https://mmmfrontend.azurewebsites.net" # This should match your Azure AD app configuration
 
 # Initialize MSAL application
 app = msal.ConfidentialClientApplication(
@@ -988,7 +988,7 @@ def main():
                                 if st.session_state.get('access', False):
                                          if st.button("Logout", key="logout_button"):
                                                   st.markdown("""
-                                                  <meta http-equiv="refresh" content="0; url='mmmfrontend.azurewebsites.net'" />
+                                                  <meta http-equiv="refresh" content="0; url='https://mmmfrontend.azurewebsites.net'" />
                                                   """, unsafe_allow_html=True)
                        
                        with col3:
