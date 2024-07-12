@@ -4,6 +4,9 @@ import numpy as np
 import _pickle as cPickle
 import pickle
 import matplotlib.pyplot as plt
+import streamlit.components.v1 as components
+
+
 
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
