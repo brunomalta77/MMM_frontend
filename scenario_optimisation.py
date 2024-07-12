@@ -783,7 +783,7 @@ def main():
                                                  st.experimental_rerun()
     
              else:
-                  # User is logged in, show content and logout button
+                # User is logged in, show content and logout button
                 st.write("You are logged in!")
                 st.markdown("""
                 <div class="header">
