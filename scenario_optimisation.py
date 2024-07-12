@@ -979,7 +979,7 @@ def main():
 
                 # Custom HTML and CSS to adjust col2 position
                 html_code = """
-                <div style="margin-top: 10px;">
+                <div style="margin-top: 3px;">
                 </div>
                 """
                  
