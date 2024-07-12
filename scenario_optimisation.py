@@ -777,7 +777,7 @@ def main():
                                                                 """,
                                                                 unsafe_allow_html=True
                                                             )
-                                                          with col2:
+                                                         with col2:
                                                             display_optimized_spend_plot(optimized_spend)
                                                  st.session_state.access = True
                                                  st.experimental_rerun()
