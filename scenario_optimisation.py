@@ -922,7 +922,45 @@ def main():
                                 )
                             with col2:
                                 display_optimized_spend_plot(optimized_spend)
-        
+                        
+              # Custom CSS to push the logout button to the right and style it
+                st.markdown("""
+              <style>
+              #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 2rem;}
+              .logout-button {
+              position: fixed;
+              top: 0.5rem;
+              right: 0.5rem;
+              z-index: 999999;
+              }
+              .logout-button button {
+              background-color: #ff4b4b;
+              color: white;
+              border: none;
+              padding: 0.25rem 0.75rem;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 1rem;
+              margin: 4px 2px;
+              cursor: pointer;
+              border-radius: 4px;
+              }
+              .logout-button button:hover {
+              background-color: #ff0000;
+              }
+              </style>
+              """, unsafe_allow_html=True)
+              
+              
+                with logout_container:
+                       col1, col2 = st.columns([19, 1])
+                       with col2:
+                                if st.session_state.get('access', False):
+                                         if st.button("Logout", key="logout_button"):
+                                                  st.markdown("""
+                                                  <meta http-equiv="refresh" content="0; url='https://equitytrackingplots-idpmnwwksvjnrgdu5rmitk.streamlit.app'" />
+                                                  """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
