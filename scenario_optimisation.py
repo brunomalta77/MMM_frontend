@@ -993,10 +993,10 @@ def main():
                                                   <meta http-equiv="refresh" content="0; url='https://mtflpjpww5ms3yv9galhh9.streamlit.app/'" />
                                                   """, unsafe_allow_html=True)
                        
-                       col1,col2 = st.columns([7,1]):
-                           with col2:
-                               #components.html(html_code, height=5)
-                               st.write(st.session_state.user_email)
+                       col1,col2 = st.columns([7,1])
+                       with col2:
+                           #components.html(html_code, height=5)
+                           st.write(st.session_state.user_email)
 
                                          
 
