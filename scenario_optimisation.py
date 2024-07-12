@@ -86,7 +86,6 @@ def get_user_info(access_token):
        headers = {'Authorization': f'Bearer {access_token}'}
        response = requests.get('https://graph.microsoft.com/v1.0/me', headers=headers)
        user_info = response.json()
-       st.write(user_info)
        return user_info.get('mail') or user_info.get('userPrincipalName')
 
 
@@ -650,6 +649,7 @@ def main():
                                         if "code" in params:
                                                  code = params["code"][0]
                                                  token = get_token_from_code(code)
+                                                 st.write(token) 
                                                  if token:
                                                           st.session_state.access_token = token
                                                           st.session_state.user_email = get_user_info(st.session_state.access_token)
