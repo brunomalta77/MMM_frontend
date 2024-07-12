@@ -660,7 +660,7 @@ def main():
                                                  code = params["code"][0]
                                                  token = get_token_from_code(code)
                                                  st.write(token)
-                                                 time.sleep(5)
+                                                 time.sleep(30)
                                                  if token:
                                                           st.session_state.access_token = token
                                                           st.session_state.user_email = get_user_info(st.session_state.access_token)
