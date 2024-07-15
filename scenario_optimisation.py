@@ -968,39 +968,41 @@ def main():
                             display_optimized_spend_plot(optimized_spend)
                     
             # Custom CSS to push the logout button to the right and style it
-            # Custom CSS for the smaller logout button and layout
+            # Custom CSS
             st.markdown("""
                 <style>
-                    #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 2rem;}
-                    .logout-button{
-                        padding: 0.25rem 0.5rem !important;
-                        font-size: 0.8rem !important;
-                    }
-                    </style>
-                    """, 
-                    unsafe_allow_html=True)  
+                #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 2rem;}
+                .stButton > button.logout-button {
+                    padding: 0.25rem 0.5rem !important;
+                    font-size: 0.8rem !important;
+                    min-height: 0px !important;
+                    height: auto !important;
+                    line-height: normal !important;
+                }
+                </style>
+                """, unsafe_allow_html=True)
             
-            
-            
-            # Custom HTML and CSS to adjust col2 position
+            # Custom HTML for spacing
             html_code = """
             <div style="margin-left: 20px;">
             </div>
             """
-             
+            
+            # Assuming logout_container is defined elsewhere in your code
             with logout_container:
-                   col1, col2,col3 = st.columns([6,1,1])
-                   with col2:
-                            components.html(html_code, height=3)
-                            st.markdown(f'<p style="font-size:12px;">{st.session_state.user_email}</p>', unsafe_allow_html=True)
-                   
-                   with col3:
-                       components.html(html_code, height=3)
-                       if st.session_state.get('access', False):
-                           if st.button("Logout", key="logout_button",type="secondary",use_container_width=False,kwargs={"class":"logout-button"}):
-                                      st.markdown("""
-                                      <meta http-equiv="refresh" content="0; url='https://mmmfrontend.azurewebsites.net'" />
-                                      """, unsafe_allow_html=True)
+                col1, col2, col3 = st.columns([6,1,1])
+                with col2:
+                    components.html(html_code, height=3)
+                    st.markdown(f'<p style="font-size:12px;">{st.session_state.user_email}</p>', unsafe_allow_html=True)
+                
+                with col3:
+                    components.html(html_code, height=3)
+                    if st.session_state.get('access', False):
+                        if st.button("Logout", key="logout_button", type="secondary", use_container_width=False, 
+                                     help="Click to logout", kwargs={"class": "logout-button"}):
+                            st.markdown("""
+                            <meta http-equiv="refresh" content="0; url='https://mmmfrontend.azurewebsites.net'" />
+                            """, unsafe_allow_html=True)
            
 
 if __name__ == "__main__":
