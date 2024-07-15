@@ -996,7 +996,7 @@ def main():
                             }
                             .logout-button button {
                                 background-color: #ff4b4b;
-                                color: white;
+                                color: red;
                                 border: none;
                                 padding: 0.1rem 0.3rem;
                                 text-align: center;
