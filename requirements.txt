@@ -3,7 +3,7 @@ xlsxwriter
 openpyxl
 numpy==1.23.5
 seaborn 
-streamlit 
+streamlit==1.11.0
 joblib
 matplotlib
 scikit-learn==1.1.2
