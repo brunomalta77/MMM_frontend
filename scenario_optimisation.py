@@ -1009,7 +1009,7 @@ def main():
             """
              
             with logout_container:
-                   col1, col2,col3 = st.columns([6,2,2])
+                   col1, col2,col3 = st.columns([6,1,1])
                    with col2:
                             components.html(html_code, height=3)
                             st.markdown(f'<p style="font-size:12px;">{st.session_state.user_email}</p>', unsafe_allow_html=True)
