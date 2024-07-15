@@ -674,14 +674,14 @@ def main():
     if not st.session_state.access:                  
         login()
         # Check for authorization code in URL
-        params = st.query_params()
+        params = st.query_params
         if "code" in params:
             code = params["code"][0]
             token = get_token_from_code(code)
             if token:
                 st.session_state.access_token = token
                 st.session_state.user_email = get_user_info(st.session_state.access_token)
-                st.query_params()
+                st.query_params.clear()
             
             st.sidebar.header("Input Parameters")
             market = st.sidebar.selectbox("Select Market", ["Japan", "Canada", "Germany"])
