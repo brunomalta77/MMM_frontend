@@ -968,12 +968,13 @@ def main():
                             display_optimized_spend_plot(optimized_spend)
                     
             # Custom CSS to push the logout button to the right and style it
+            # Custom CSS for the smaller logout button and layout
             st.markdown("""
             <style>
             #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 2rem;}
             .logout-button {
                 position: fixed;
-                top: 3rem;
+                top: 0.5rem;
                 right: 0.5rem;
                 z-index: 999999;
             }
@@ -981,17 +982,21 @@ def main():
                 background-color: #ff4b4b;
                 color: white;
                 border: none;
-                padding: 0.15rem 0.5rem;  /* Reduced padding to make button smaller */
+                padding: 0.1rem 0.3rem;
                 text-align: center;
                 text-decoration: none;
                 display: inline-block;
-                font-size: 0.8rem;  /* Reduced font size */
-                margin: 2px 1px;  /* Reduced margin */
+                font-size: 0.7rem;
+                margin: 1px;
                 cursor: pointer;
-                border-radius: 3px;  /* Slightly reduced border radius */
+                border-radius: 2px;
             }
             .logout-button button:hover {
                 background-color: #ff0000;
+            }
+            .user-email {
+                font-size: 10px;
+                margin-right: 5px;
             }
             </style>
             """, unsafe_allow_html=True)
