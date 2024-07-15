@@ -572,6 +572,10 @@ def main():
         .download-btn:hover {
             background-color: #163a56;
         }
+         .small-button {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.8rem;
+        }
         .download-btn i {
             margin-right: 5px;
         }
@@ -988,7 +992,6 @@ def main():
             </div>
             """
             
-            # Assuming logout_container is defined elsewhere in your code
             with logout_container:
                 col1, col2, col3 = st.columns([6,1,1])
                 with col2:
@@ -998,17 +1001,8 @@ def main():
                 with col3:
                     components.html(html_code, height=3)
                     if st.session_state.get('access', False):
-                        st.markdown("""
-                        <style>
-                            .stButton > button.small-button {
-                                font-size: 12px;
-                                padding: 2px 10px;
-                                height: auto;
-                            }
-                        </style>
-                        """, unsafe_allow_html=True)
-                        if st.button("Logout", key="logout_button", type="secondary", use_container_width=False, 
-                                     help="Click to logout", kwargs={"class": "logout-button"}):
+                        if st.button("Logout", key="small_button", type="secondary", use_container_width=False, 
+                                     help="Click to logout", kwargs={"class": "small_button"}):
                             st.markdown("""
                             <meta http-equiv="refresh" content="0; url='https://mmmfrontend.azurewebsites.net'" />
                             """, unsafe_allow_html=True)
