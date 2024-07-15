@@ -335,7 +335,7 @@ def negative_exponential_saturation_curve(x, max_uplift, slope):
 # Function to calculate the display the impact of increase in distribution points
 def display_distribution_impact(weekly_spend_data, distribution_change):
     # Aggregate yearly data for 2022 and 2023
-    weekly_data = weekly_spend_data.groupby(pd.to_datetime(weekly_spend_data['Date']).dt.year).sum()
+    weekly_data = weekly_spend_data.groupby(weekly_spend_data['Date'].dt.year).sum(numeric_only=True)
 
     # Calculate the change in aggregated yearly distribution contribution
     change_in_contribution = abs(((weekly_data.loc[2023, 'dist_cont'] - weekly_data.loc[2022, 'dist_cont']) / weekly_data.loc[2022, 'dist_cont']))
