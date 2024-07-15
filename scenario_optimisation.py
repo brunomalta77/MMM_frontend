@@ -994,10 +994,6 @@ def main():
             .logout-button button:hover {
                 background-color: #ff0000;
             }
-            .user-email {
-                font-size: 10px;
-                margin-right: 5px;
-            }
             </style>
             """, unsafe_allow_html=True)
                       
