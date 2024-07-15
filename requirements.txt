@@ -6,7 +6,7 @@ seaborn
 streamlit 
 joblib
 matplotlib
-scikit-learn==1.3.0
+scikit-learn
 shap
 xgboost
 IPython
