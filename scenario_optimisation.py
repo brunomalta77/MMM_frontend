@@ -1011,7 +1011,7 @@ def main():
                    with col3:
                        components.html(html_code, height=3)
                        if st.session_state.get('access', False):
-                           if st.button("Logout", key="logout_button"):
+                           if st.button("Logout", key="logout_button",type="secondary",use_container_width=False,kwargs={"class":"logout-button"}):
                                       st.markdown("""
                                       <meta http-equiv="refresh" content="0; url='https://mmmfrontend.azurewebsites.net'" />
                                       """, unsafe_allow_html=True)
