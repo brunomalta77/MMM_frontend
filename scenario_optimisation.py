@@ -998,6 +998,15 @@ def main():
                 with col3:
                     components.html(html_code, height=3)
                     if st.session_state.get('access', False):
+                        st.markdown("""
+                        <style>
+                            .stButton > button.small-button {
+                                font-size: 12px;
+                                padding: 2px 10px;
+                                height: auto;
+                            }
+                        </style>
+                        """, unsafe_allow_html=True)
                         if st.button("Logout", key="logout_button", type="secondary", use_container_width=False, 
                                      help="Click to logout", kwargs={"class": "logout-button"}):
                             st.markdown("""
