@@ -969,35 +969,7 @@ def main():
                     
             # Custom CSS to push the logout button to the right and style it
             # Custom CSS for the smaller logout button and layout
-            st.markdown("""
-            <style>
-            #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 2rem;}
-            .logout-button {
-                position: fixed;
-                top: 0.5rem;
-                right: 0.5rem;
-                z-index: 999999;
-            }
-            .logout-button button {
-                background-color: #ff4b4b;
-                color: white;
-                border: none;
-                padding: 0.1rem 0.3rem;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 0.3rem;
-                margin: 1px;
-                cursor: pointer;
-                border-radius: 2px;
-            }
-            .logout-button button:hover {
-                background-color: #ff0000;
-            }
-            </style>
-            """, unsafe_allow_html=True)
-                      
-            
+
             # Custom HTML and CSS to adjust col2 position
             html_code = """
             <div style="margin-left: 20px;">
@@ -1013,11 +985,38 @@ def main():
                    with col3:
                        components.html(html_code, height=3)
                        if st.session_state.get('access', False):
-                                 if st.button("Logout", key="logout_button"):
-                                          st.markdown("""
-                                          <meta http-equiv="refresh" content="0; url='https://mmmfrontend.azurewebsites.net'" />
-                                          """, unsafe_allow_html=True)
-               
+                           st.markdown("""
+                            <style>
+                            #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 2rem;}
+                            .logout-button {
+                                position: fixed;
+                                top: 0.5rem;
+                                right: 0.5rem;
+                                z-index: 999999;
+                            }
+                            .logout-button button {
+                                background-color: #ff4b4b;
+                                color: white;
+                                border: none;
+                                padding: 0.1rem 0.3rem;
+                                text-align: center;
+                                text-decoration: none;
+                                display: inline-block;
+                                font-size: 0.3rem;
+                                margin: 1px;
+                                cursor: pointer;
+                                border-radius: 2px;
+                            }
+                            .logout-button button:hover {
+                                background-color: #ff0000;
+                            }
+                            </style>
+                            """, unsafe_allow_html=True)  
+                           if st.button("Logout", key="logout_button"):
+                                      st.markdown("""
+                                      <meta http-equiv="refresh" content="0; url='https://mmmfrontend.azurewebsites.net'" />
+                                      """, unsafe_allow_html=True)
+           
 
 if __name__ == "__main__":
     main()
