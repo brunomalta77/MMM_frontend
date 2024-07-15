@@ -1,12 +1,12 @@
 pandas
 xlsxwriter 
 openpyxl
-numpy==1.23.5
 seaborn 
-streamlit==1.11.0
+streamlit
 joblib
 matplotlib
 scikit-learn==1.1.2
+numpy==1.23.5
 shap
 xgboost
 IPython
