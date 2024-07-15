@@ -990,7 +990,7 @@ def main():
                             #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 2rem;}
                             .logout-button {
                                 position: fixed;
-                                top: 0.5rem;
+                                top: 0.2rem;
                                 right: 0.5rem;
                                 z-index: 999999;
                             }
