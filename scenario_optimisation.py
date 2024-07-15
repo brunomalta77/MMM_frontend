@@ -676,7 +676,7 @@ def main():
         # Check for authorization code in URL
         params = st.query_params
         if "code" in params:
-            code = params["code"][0]
+            code = params["code"]
             token = get_token_from_code(code)
             if token:
                 st.session_state.access_token = token
