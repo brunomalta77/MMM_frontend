@@ -972,13 +972,13 @@ def main():
             st.markdown("""
                     <style>
                     #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 2rem;}
-                    .logout-button {
+                    .logout-button{
                         position: fixed;
                         top: 0.2rem;
                         right: 0.5rem;
                         z-index: 999999;
                     }
-                    .logout-button button {
+                    .logout-button{
                         background-color: #ff4b4b;
                         color: red;
                         border: none;
@@ -991,7 +991,7 @@ def main():
                         cursor: pointer;
                         border-radius: 2px;
                     }
-                    .logout-button button:hover {
+                    .logout-button:hover {
                         background-color: #ff0000;
                     }
                     </style>
