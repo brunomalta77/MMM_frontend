@@ -572,10 +572,6 @@ def main():
         .download-btn:hover {
             background-color: #163a56;
         }
-         .small-button {
-        padding: 0.1rem 0.5rem;
-        font-size: 0.8rem;
-        }
         .download-btn i {
             margin-right: 5px;
         }
