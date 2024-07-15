@@ -985,33 +985,6 @@ def main():
                    with col3:
                        components.html(html_code, height=3)
                        if st.session_state.get('access', False):
-                           st.markdown("""
-                            <style>
-                            #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 2rem;}
-                            .logout-button {
-                                position: fixed;
-                                top: 0.2rem;
-                                right: 0.5rem;
-                                z-index: 999999;
-                            }
-                            .logout-button button {
-                                background-color: #ff4b4b;
-                                color: red;
-                                border: none;
-                                padding: 0.1rem 0.3rem;
-                                text-align: center;
-                                text-decoration: none;
-                                display: inline-block;
-                                font-size: 0.1rem;
-                                margin: 3px;
-                                cursor: pointer;
-                                border-radius: 2px;
-                            }
-                            .logout-button button:hover {
-                                background-color: #ff0000;
-                            }
-                            </style>
-                            """, unsafe_allow_html=True)  
                            if st.button("Logout", key="logout_button"):
                                       st.markdown("""
                                       <meta http-equiv="refresh" content="0; url='https://mmmfrontend.azurewebsites.net'" />
