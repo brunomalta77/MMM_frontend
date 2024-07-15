@@ -1,2 +1,5 @@
 [theme]
+backgroundColor="#FFFFFF"
 secondaryBackgroundColor="#f2e0f9"
+[client]
+showErrorDetails = false
