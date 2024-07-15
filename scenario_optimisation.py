@@ -974,7 +974,7 @@ def main():
                 #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 2rem;}
                 .stButton > button.logout-button {
                     padding: 0.25rem 0.5rem !important;
-                    font-size: 0.8rem !important;
+                    font-size: 0.1rem !important;
                     min-height: 0px !important;
                     height: auto !important;
                     line-height: normal !important;
