@@ -1002,8 +1002,8 @@ def main():
                                 text-align: center;
                                 text-decoration: none;
                                 display: inline-block;
-                                font-size: 0.3rem;
-                                margin: 1px;
+                                font-size: 0.1rem;
+                                margin: 3px;
                                 cursor: pointer;
                                 border-radius: 2px;
                             }
