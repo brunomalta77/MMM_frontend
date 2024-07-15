@@ -1,7 +1,7 @@
 pandas
 xlsxwriter 
 openpyxl
-numpy==1.23.5
+numpy
 seaborn 
 streamlit 
 joblib
