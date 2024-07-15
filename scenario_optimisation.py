@@ -986,7 +986,7 @@ def main():
                 text-align: center;
                 text-decoration: none;
                 display: inline-block;
-                font-size: 0.7rem;
+                font-size: 0.3rem;
                 margin: 1px;
                 cursor: pointer;
                 border-radius: 2px;
