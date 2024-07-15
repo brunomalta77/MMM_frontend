@@ -627,11 +627,11 @@ def main():
           
     # Load data
     df = pd.read_excel(r"BAT Japan model - 9.3_MP_ownprice (1).xlsx", sheet_name='Data')
-    dff_fin = pd.read_excel(r"bat_japan_fm_cons_cont_v2.xlsx")
+    dff_fin = pd.read_excel(r"/bat_japan_fm_cons_cont_v2.xlsx")
     params = pd.read_excel(r"media_saturation_params_david.xlsx")
     final_gb_model = pickle.load(open(r"bat_japan_fm_cons_model_v1.pickle.dat", "rb"))
     df_final = pd.read_excel(r"df_final.xlsx")
-    coldf = pd.read_excel(r"BAT Japan model - 9.3_MP_ownprice.xlsx", sheet_name='FM_cons_columns')
+    coldf = pd.read_excel(r"BAT Japan model - 9.3_MP_ownprice (1).xlsx", sheet_name='FM_cons_columns')
     #=========================== User Info Top Right ==================================
     #Top right user info
     # st.markdown(
@@ -647,7 +647,7 @@ def main():
     #=========================== Add logo on sidebar  ==================================
     
     # Path to the logo on your local machine
-    logo_path = r"C:\Users\BrunoMalta\OneDrive - Brand Delta\Documents\Projects\mmm_front_end\new_logo_rembg.png"
+    logo_path = r"new_logo_rembg.png"
     
     # Display the logo at the top right corner
     logo_img = Image.open(logo_path)
