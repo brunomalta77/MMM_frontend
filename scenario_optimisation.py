@@ -1433,7 +1433,7 @@ def main():
                 with tab1:
                     # Display contributions
                     #st.header("Model Results")
-                    agg_cont= pd.read_excel(r"C:\Users\Technology\Desktop\tasks\mmm_random_forest_shap\bat_mmm_models\front_end\scenario_optimisation\bat_japan_fm_cons_cont_agg.xlsx")
+                    agg_cont= pd.read_excel(r"bat_japan_fm_cons_cont_agg.xlsx")
                     #st.markdown('<div class="section-header">Model Results</div>', unsafe_allow_html=True)
                     #st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
                     st.markdown('<div class="section-header">Aggregated Yearly Contribution %</div>', unsafe_allow_html=True)
