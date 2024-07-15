@@ -827,195 +827,195 @@ def main():
         st.sidebar.markdown('<div class="scaling-input">', unsafe_allow_html=True)   
             
         #=========================== Optimise total budget page ==================================
-            if page == "Optimise total budget":
-                # User is logged in, show content and logout button
-                st.markdown("""
-                <div class="header">
-                <div class="header-title">Optimise Total Budget</div>
-                </div>
-                """, unsafe_allow_html=True)
-                
-                # Load data
-                df = pd.read_excel(r"BAT Japan model - 9.3_MP_ownprice (1).xlsx", sheet_name='Data')
-                dff_fin = pd.read_excel(r"bat_japan_fm_cons_cont_v2.xlsx")
-                params = pd.read_excel(r"media_saturation_params.xlsx")
-                
-                weekly_spend_df = pd.DataFrame(
-                {'CVS': df['jp_bat_CVS_FM-total_exc_enabling_inv']/174.88, 
-                'NMP': df['jp_bat_NMP_without_enabling_inv']/174.88, 
-                'One2One': df['jp_bat_one2one_approach']/174.88, 
-                'EDM': df['jp_bat_EDM_total_inv']/174.88, 
-                'OOH': df['jp_bat_OOH_reach']/174.88, 
-                'Social': df['jp_bat_social_total_inv']/174.88, 
-                'Horeca': df['jp_bat_horeca-events_total_inv']/174.88, 
-                'ConnectedTV': df['jp_bat_ConnectedTV_inv']/174.88, 
-                'DigDisp': df['jp_bat_DigitalDisplay_inv']/174.88, 
-                'ProgDisp': df['jp_bat_ProgrammaticDisplay_inv']/174.88, 
-                'ProgVid': df['jp_bat_ProgrammaticVideo_inv']/174.88, 
-                'SocialDisp': df['jp_bat_SocialDisplay_inv']/174.88, 
-                'Year': df['y']
-                })
-                
-                media_contr_df = pd.DataFrame(
-                {'CVS': [dff_fin['jp_bat_CVS_FM-total_exc_enabling_inv_adstocked'].sum()],
-                'NMP': [dff_fin['jp_bat_NMP_without_enabling_inv_adstocked'].sum()],
-                'One2One': [dff_fin['jp_bat_one2one_approach_adstocked'].sum()],
-                'EDM': [dff_fin['jp_bat_EDM_total_inv_adstocked'].sum()],
-                'OOH': [dff_fin['jp_bat_OOH_reach_adstocked'].sum()],
-                'Social': [dff_fin['jp_bat_social_total_inv_adstocked'].sum()],
-                'Horeca': [dff_fin['jp_bat_horeca-events_total_inv_adstocked'].sum()],
-                'ConnectedTV': [dff_fin['jp_bat_ConnectedTV_impressions_adstocked'].sum()],
-                'DigDisp': [dff_fin['jp_bat_DigitalDisplay_impressions_adstocked'].sum()],
-                'ProgDisp': [dff_fin['jp_bat_ProgrammaticDisplay_impressions_adstocked'].sum()],
-                'ProgVid': [dff_fin['jp_bat_ProgrammaticVideo_impressions_adstocked'].sum()],
-                'SocialDisp': [dff_fin['jp_bat_SocialDisplay_impressions_adstocked'].sum()]
-                })
-                total_spend_df = pd.DataFrame(weekly_spend_df.groupby('Year')[list(weekly_spend_df.columns)[:-1]].sum())
-                media_channels = ['CVS', 'NMP','One2One','EDM','OOH','Social','Horeca','ConnectedTV','DigDisp','ProgDisp','ProgVid','SocialDisp']
-                params.index=media_channels
-                
-                # Print the main metrics
-                total_spend = total_spend_df.loc[2023].sum()
-                incremental_revenue = (media_contr_df.sum().sum()*23.94)/174.88
-                incremental_gross_margin = incremental_revenue * 0.3  # Assuming 30% gross margin
+        if page == "Optimise total budget":
+            # User is logged in, show content and logout button
+            st.markdown("""
+            <div class="header">
+            <div class="header-title">Optimise Total Budget</div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # Load data
+            df = pd.read_excel(r"BAT Japan model - 9.3_MP_ownprice (1).xlsx", sheet_name='Data')
+            dff_fin = pd.read_excel(r"bat_japan_fm_cons_cont_v2.xlsx")
+            params = pd.read_excel(r"media_saturation_params.xlsx")
+            
+            weekly_spend_df = pd.DataFrame(
+            {'CVS': df['jp_bat_CVS_FM-total_exc_enabling_inv']/174.88, 
+            'NMP': df['jp_bat_NMP_without_enabling_inv']/174.88, 
+            'One2One': df['jp_bat_one2one_approach']/174.88, 
+            'EDM': df['jp_bat_EDM_total_inv']/174.88, 
+            'OOH': df['jp_bat_OOH_reach']/174.88, 
+            'Social': df['jp_bat_social_total_inv']/174.88, 
+            'Horeca': df['jp_bat_horeca-events_total_inv']/174.88, 
+            'ConnectedTV': df['jp_bat_ConnectedTV_inv']/174.88, 
+            'DigDisp': df['jp_bat_DigitalDisplay_inv']/174.88, 
+            'ProgDisp': df['jp_bat_ProgrammaticDisplay_inv']/174.88, 
+            'ProgVid': df['jp_bat_ProgrammaticVideo_inv']/174.88, 
+            'SocialDisp': df['jp_bat_SocialDisplay_inv']/174.88, 
+            'Year': df['y']
+            })
+            
+            media_contr_df = pd.DataFrame(
+            {'CVS': [dff_fin['jp_bat_CVS_FM-total_exc_enabling_inv_adstocked'].sum()],
+            'NMP': [dff_fin['jp_bat_NMP_without_enabling_inv_adstocked'].sum()],
+            'One2One': [dff_fin['jp_bat_one2one_approach_adstocked'].sum()],
+            'EDM': [dff_fin['jp_bat_EDM_total_inv_adstocked'].sum()],
+            'OOH': [dff_fin['jp_bat_OOH_reach_adstocked'].sum()],
+            'Social': [dff_fin['jp_bat_social_total_inv_adstocked'].sum()],
+            'Horeca': [dff_fin['jp_bat_horeca-events_total_inv_adstocked'].sum()],
+            'ConnectedTV': [dff_fin['jp_bat_ConnectedTV_impressions_adstocked'].sum()],
+            'DigDisp': [dff_fin['jp_bat_DigitalDisplay_impressions_adstocked'].sum()],
+            'ProgDisp': [dff_fin['jp_bat_ProgrammaticDisplay_impressions_adstocked'].sum()],
+            'ProgVid': [dff_fin['jp_bat_ProgrammaticVideo_impressions_adstocked'].sum()],
+            'SocialDisp': [dff_fin['jp_bat_SocialDisplay_impressions_adstocked'].sum()]
+            })
+            total_spend_df = pd.DataFrame(weekly_spend_df.groupby('Year')[list(weekly_spend_df.columns)[:-1]].sum())
+            media_channels = ['CVS', 'NMP','One2One','EDM','OOH','Social','Horeca','ConnectedTV','DigDisp','ProgDisp','ProgVid','SocialDisp']
+            params.index=media_channels
+            
+            # Print the main metrics
+            total_spend = total_spend_df.loc[2023].sum()
+            incremental_revenue = (media_contr_df.sum().sum()*23.94)/174.88
+            incremental_gross_margin = incremental_revenue * 0.3  # Assuming 30% gross margin
+            col1, col2, col3 = st.columns(3)
+            col1.metric(label="Total Spend in 2023 (GBP)", value=f"£{total_spend/1e6:.2f}M")
+            col2.metric(label="Incremental Revenue (GBP)", value=f"£{incremental_revenue/1e6:.2f}M")
+            col3.metric(label="Incremental Gross Margin (GBP)", value=f"£{incremental_gross_margin/1e6:.2f}M")
+            st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
+            
+            # Ask user to enter total budget and channel spend constraints
+            st.subheader("Optimization Inputs")
+            budget_change_pct = st.number_input("Budget % Change", value=st.session_state.inputs.get("budget_change_pct", 0), key="budget_change_pct")
+            total_budget = total_spend_df.loc[2023].sum() * (1 + budget_change_pct / 100)  
+            
+            min_spend = {}
+            max_spend = {}
+            
+            cols = st.columns(3)
+            #cols[0].markdown("### Channel")
+            cols[0].markdown("### Min (%)")
+            cols[1].markdown("### Max (%)")
+            cols[2].markdown("### Last Year")
+            
+            for channel in media_channels:
                 col1, col2, col3 = st.columns(3)
-                col1.metric(label="Total Spend in 2023 (GBP)", value=f"£{total_spend/1e6:.2f}M")
-                col2.metric(label="Incremental Revenue (GBP)", value=f"£{incremental_revenue/1e6:.2f}M")
-                col3.metric(label="Incremental Gross Margin (GBP)", value=f"£{incremental_gross_margin/1e6:.2f}M")
-                st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
-                
-                # Ask user to enter total budget and channel spend constraints
-                st.subheader("Optimization Inputs")
-                budget_change_pct = st.number_input("Budget % Change", value=st.session_state.inputs.get("budget_change_pct", 0), key="budget_change_pct")
-                total_budget = total_spend_df.loc[2023].sum() * (1 + budget_change_pct / 100)  
-                
-                min_spend = {}
-                max_spend = {}
-                
-                cols = st.columns(3)
-                #cols[0].markdown("### Channel")
-                cols[0].markdown("### Min (%)")
-                cols[1].markdown("### Max (%)")
-                cols[2].markdown("### Last Year")
-                
-                for channel in media_channels:
-                    col1, col2, col3 = st.columns(3)
-                    # with col1:
-                    #     col1.markdown(f"**{channel}**")
-                    with col1:
-                        min_spend[channel] = st.text_input(f"{channel}_Min", value=st.session_state.inputs.get(f"min_spend_{channel}", 0), key=f"min_spend_{channel}")
-                    with col2:
-                        max_spend[channel] = st.text_input(f"{channel}_Max", value=st.session_state.inputs.get(f"max_spend_{channel}", 0), key=f"max_spend_{channel}")
-                    with col3:
-                        col3.markdown(f"£{round(total_spend_df.loc[2023, channel]/1e6,1)}M")
-                
-                
-                
-                if st.button("Optimize Spend"):
-                        st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
-                        min_spend = {channel: total_spend_df.loc[2023, channel] * (1 + float(min_spend[channel]) / 100) for channel in media_channels if min_spend[channel]}
-                        max_spend = {channel: total_spend_df.loc[2023, channel] * (1 + float(max_spend[channel]) / 100) for channel in media_channels if max_spend[channel]}
-                        # min_spend = {k: float(v) for k, v in min_spend.items() if v}
-                        # max_spend = {k: float(v) for k, v in max_spend.items() if v}
-                        optimized_spend = optimize_media_spend(total_budget, media_channels, list(min_spend.values()), list(max_spend.values()), params)
-                        if optimized_spend:
-                            # Print the optimised metrics
-                            new_total_spend = sum(optimized_spend.values())
-                            new_incremental_revenue = calculate_incremental_revenue(optimized_spend, media_contr_df, params)
-                            new_incremental_gross_margin = new_incremental_revenue * 0.3  # Assuming 30% gross margin
-                            col1, col2, col3 = st.columns(3)
-                            col1.metric(label="New Total Spend (GBP)", value=f"£{new_total_spend/1e6:.2f}M")
-                            col2.metric(label="Optimised Incremental Revenue (GBP)", value=f"£{new_incremental_revenue/1e6:.2f}M")
-                            col3.metric(label="Optimised Incremental Gross Margin (GBP)", value=f"£{new_incremental_gross_margin/1e6:.2f}M")
-                            #st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
-                            #st.markdown('<div class="section-header">Optimized Total Spend</div>', unsafe_allow_html=True)                
-                            
-                            actual_spend = total_spend_df.loc[2023].to_dict()
-                            col1, col2 = st.columns(2)
-                            with col1:
-                                opt_results_df = display_comparison_table(actual_spend, optimized_spend, media_contr_df, params)
-                                st.dataframe(opt_results_df, height=320)
-                                
-                                # Display download button
-                                opt_results_df_download = to_excel(opt_results_df)
-                                b64 = base64.b64encode(opt_results_df_download).decode()
-                                st.markdown(f"""
-                                <a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="optimised_spend.xlsx">
-                                    <i class="fas fa-download download-icon"></i>
-                                </a>
-                                """, unsafe_allow_html=True)
-                
-                                # Add download button for optimal spend
-                                #st.markdown(generate_excel_download_link(opt_results_df, "optimal_spend", "Download"), unsafe_allow_html=True)
-                                # st.markdown(
-                                #     """
-                                #     <div class="results-section">
-                                #         <button class="download-btn">
-                                #             <i class="fa fa-download"></i>
-                                #         </button>
-                                #     </div>
-                                #     """,
-                                #     unsafe_allow_html=True
-                                # )
-                                # Include Font Awesome for download icon
-                                st.markdown(
-                                    """
-                                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-                                    """,
-                                    unsafe_allow_html=True
-                                )
-                            with col2:
-                                display_optimized_spend_plot(optimized_spend)
+                # with col1:
+                #     col1.markdown(f"**{channel}**")
+                with col1:
+                    min_spend[channel] = st.text_input(f"{channel}_Min", value=st.session_state.inputs.get(f"min_spend_{channel}", 0), key=f"min_spend_{channel}")
+                with col2:
+                    max_spend[channel] = st.text_input(f"{channel}_Max", value=st.session_state.inputs.get(f"max_spend_{channel}", 0), key=f"max_spend_{channel}")
+                with col3:
+                    col3.markdown(f"£{round(total_spend_df.loc[2023, channel]/1e6,1)}M")
+            
+            
+            
+            if st.button("Optimize Spend"):
+                    st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
+                    min_spend = {channel: total_spend_df.loc[2023, channel] * (1 + float(min_spend[channel]) / 100) for channel in media_channels if min_spend[channel]}
+                    max_spend = {channel: total_spend_df.loc[2023, channel] * (1 + float(max_spend[channel]) / 100) for channel in media_channels if max_spend[channel]}
+                    # min_spend = {k: float(v) for k, v in min_spend.items() if v}
+                    # max_spend = {k: float(v) for k, v in max_spend.items() if v}
+                    optimized_spend = optimize_media_spend(total_budget, media_channels, list(min_spend.values()), list(max_spend.values()), params)
+                    if optimized_spend:
+                        # Print the optimised metrics
+                        new_total_spend = sum(optimized_spend.values())
+                        new_incremental_revenue = calculate_incremental_revenue(optimized_spend, media_contr_df, params)
+                        new_incremental_gross_margin = new_incremental_revenue * 0.3  # Assuming 30% gross margin
+                        col1, col2, col3 = st.columns(3)
+                        col1.metric(label="New Total Spend (GBP)", value=f"£{new_total_spend/1e6:.2f}M")
+                        col2.metric(label="Optimised Incremental Revenue (GBP)", value=f"£{new_incremental_revenue/1e6:.2f}M")
+                        col3.metric(label="Optimised Incremental Gross Margin (GBP)", value=f"£{new_incremental_gross_margin/1e6:.2f}M")
+                        #st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
+                        #st.markdown('<div class="section-header">Optimized Total Spend</div>', unsafe_allow_html=True)                
                         
-                # Custom CSS to push the logout button to the right and style it
-                st.markdown("""
-                <style>
-                #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 2rem;}
-                .logout-button {
-                    position: fixed;
-                    top: 3rem;
-                    right: 0.5rem;
-                    z-index: 999999;
-                }
-                .logout-button button {
-                    background-color: #ff4b4b;
-                    color: white;
-                    border: none;
-                    padding: 0.15rem 0.5rem;  /* Reduced padding to make button smaller */
-                    text-align: center;
-                    text-decoration: none;
-                    display: inline-block;
-                    font-size: 0.8rem;  /* Reduced font size */
-                    margin: 2px 1px;  /* Reduced margin */
-                    cursor: pointer;
-                    border-radius: 3px;  /* Slightly reduced border radius */
-                }
-                .logout-button button:hover {
-                    background-color: #ff0000;
-                }
-                </style>
-                """, unsafe_allow_html=True)
-                          
-                
-                # Custom HTML and CSS to adjust col2 position
-                html_code = """
-                <div style="margin-left: 20px;">
-                </div>
-                """
-                 
-                with logout_container:
-                       col1, col2,col3 = st.columns([6,1,1])
-                       with col2:
-                                components.html(html_code, height=3)
-                                st.markdown(f'<p style="font-size:12px;">{st.session_state.user_email}</p>', unsafe_allow_html=True)
-                       
-                       with col3:
-                           components.html(html_code, height=3)
-                           if st.session_state.get('access', False):
-                                     if st.button("Logout", key="logout_button"):
-                                              st.markdown("""
-                                              <meta http-equiv="refresh" content="0; url='https://mmmfrontend.azurewebsites.net'" />
-                                              """, unsafe_allow_html=True)
+                        actual_spend = total_spend_df.loc[2023].to_dict()
+                        col1, col2 = st.columns(2)
+                        with col1:
+                            opt_results_df = display_comparison_table(actual_spend, optimized_spend, media_contr_df, params)
+                            st.dataframe(opt_results_df, height=320)
+                            
+                            # Display download button
+                            opt_results_df_download = to_excel(opt_results_df)
+                            b64 = base64.b64encode(opt_results_df_download).decode()
+                            st.markdown(f"""
+                            <a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="optimised_spend.xlsx">
+                                <i class="fas fa-download download-icon"></i>
+                            </a>
+                            """, unsafe_allow_html=True)
+            
+                            # Add download button for optimal spend
+                            #st.markdown(generate_excel_download_link(opt_results_df, "optimal_spend", "Download"), unsafe_allow_html=True)
+                            # st.markdown(
+                            #     """
+                            #     <div class="results-section">
+                            #         <button class="download-btn">
+                            #             <i class="fa fa-download"></i>
+                            #         </button>
+                            #     </div>
+                            #     """,
+                            #     unsafe_allow_html=True
+                            # )
+                            # Include Font Awesome for download icon
+                            st.markdown(
+                                """
+                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+                                """,
+                                unsafe_allow_html=True
+                            )
+                        with col2:
+                            display_optimized_spend_plot(optimized_spend)
+                    
+            # Custom CSS to push the logout button to the right and style it
+            st.markdown("""
+            <style>
+            #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 2rem;}
+            .logout-button {
+                position: fixed;
+                top: 3rem;
+                right: 0.5rem;
+                z-index: 999999;
+            }
+            .logout-button button {
+                background-color: #ff4b4b;
+                color: white;
+                border: none;
+                padding: 0.15rem 0.5rem;  /* Reduced padding to make button smaller */
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 0.8rem;  /* Reduced font size */
+                margin: 2px 1px;  /* Reduced margin */
+                cursor: pointer;
+                border-radius: 3px;  /* Slightly reduced border radius */
+            }
+            .logout-button button:hover {
+                background-color: #ff0000;
+            }
+            </style>
+            """, unsafe_allow_html=True)
+                      
+            
+            # Custom HTML and CSS to adjust col2 position
+            html_code = """
+            <div style="margin-left: 20px;">
+            </div>
+            """
+             
+            with logout_container:
+                   col1, col2,col3 = st.columns([6,1,1])
+                   with col2:
+                            components.html(html_code, height=3)
+                            st.markdown(f'<p style="font-size:12px;">{st.session_state.user_email}</p>', unsafe_allow_html=True)
+                   
+                   with col3:
+                       components.html(html_code, height=3)
+                       if st.session_state.get('access', False):
+                                 if st.button("Logout", key="logout_button"):
+                                          st.markdown("""
+                                          <meta http-equiv="refresh" content="0; url='https://mmmfrontend.azurewebsites.net'" />
+                                          """, unsafe_allow_html=True)
                
 
 if __name__ == "__main__":
