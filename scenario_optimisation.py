@@ -627,7 +627,7 @@ def main():
           
     # Load data
     df = pd.read_excel(r"BAT Japan model - 9.3_MP_ownprice (1).xlsx", sheet_name='Data')
-    dff_fin = pd.read_excel(r"/bat_japan_fm_cons_cont_v2.xlsx")
+    dff_fin = pd.read_excel(r"bat_japan_fm_cons_cont_v2.xlsx")
     params = pd.read_excel(r"media_saturation_params_david.xlsx")
     final_gb_model = pickle.load(open(r"bat_japan_fm_cons_model_v1.pickle.dat", "rb"))
     df_final = pd.read_excel(r"df_final.xlsx")
